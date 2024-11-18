@@ -27,7 +27,7 @@ char	*ft_strlowcase(char *str)
 	}
 	return (str);
 }
-
+/* 
 int	main(void)
 {
 	char str[] = "abec122-edJAJAo";
@@ -35,3 +35,4 @@ int	main(void)
 	ft_strlowcase(str);
 	printf("%s", str);
 }
+ */

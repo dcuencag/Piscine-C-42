@@ -14,43 +14,33 @@
 
 char	*ft_strcapitalize(char *str)
 {
-	int	pos;
-	int	new_word;
+	int	i;
+	int	new;
 
-	pos = 0;
-	new_word = 1;
-	while (str[pos] != '\0')
+	i = 0;
+	new = 1;
+	while (str[i])
 	{
-		if ((str[pos] >= 'a' && str[pos] <= 'z')
-	|| (str[pos] >= 'A' && str[pos] <= 'Z'))
+		if ((str[i] >= 'a' && str[i] <= 'z')
+			|| (str[i] >= 'A' && str[i] <= 'Z'))
 		{
-			if (new_word && str[pos] >= 'a' && str[pos] <= 'z')
-			{
-				str[pos] = str[pos] - 32;
-			}
-			else if (!new_word && str[pos] >= 'A' && str[pos] <= 'Z')
-			{
-				str[pos] = str[pos] + 32;
-			}
-			new_word = 0;
-		}
-		else if (str[pos] >= '0' && str[pos] <= '9')
-		{
-			new_word = 0;
+			str[i] = (new && str[i] >= 'a') ? str[i] - 32 :
+				(!new && str[i] <= 'Z') ? str[i] + 32 : str[i];
+			new = 0;
 		}
 		else
-		{
-			new_word = 1;
-		}
-		pos++;
+			new = !(str[i] >= '0' && str[i] <= '9');
+		i++;
 	}
 	return (str);
 }
-
+/* 
 int	main(void)
 {
-	char str[] = "qUE nO me ,DIGAS qUe éSto es fácil";
-
+	char str[] = "qUE nO me ,dIGAS ?qUe !éSto es fácil";
+	
+	printf("\nBefore: %s\n\n", str);
 	ft_strcapitalize(str);
-	printf("%s\n", str);
-}
+	printf("After:  %s\n\n", str);
+	return (0);
+} */
