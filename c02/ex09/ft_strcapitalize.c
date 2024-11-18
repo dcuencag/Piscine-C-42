@@ -12,58 +12,44 @@
 
 #include <stdio.h>
 
-char	ft_up(char *str)
-{
-	int	pos;
-
-	pos = 0;
-	while (str[pos] != '\0')
-	{
-		if (str[pos] >= 'a' && str[pos] <= 'z')
-		{
-			str[pos] = str[pos] - 32;
-		}
-		pos++;
-	}
-	return (str);
-}
-
-char	ft_down(char *str)
-{
-	int	pos;
-
-	pos = 0;
-	while (str[pos] != '\0')
-	{
-		if (str[pos] >= 'A' && str[pos] <= 'Z')
-		{
-			str[pos] = str[pos] + 32;
-		}
-		pos++;
-	}
-	return (str);
-}
-
 char	*ft_strcapitalize(char *str)
 {
 	int	pos;
+	int	new_word;
 
 	pos = 0;
+	new_word = 1;
 	while (str[pos] != '\0')
-	{	//me quedé aquí viendo que condiciones meter para poder diferenciar entre mins mans en el str
-		if (str[pos] == ' ')
+	{
+		if ((str[pos] >= 'a' && str[pos] <= 'z')
+	|| (str[pos] >= 'A' && str[pos] <= 'Z'))
 		{
-			ft_up(str[pos + 1]);
+			if (new_word && str[pos] >= 'a' && str[pos] <= 'z')
+			{
+				str[pos] = str[pos] - 32;
+			}
+			else if (!new_word && str[pos] >= 'A' && str[pos] <= 'Z')
+			{
+				str[pos] = str[pos] + 32;
+			}
+			new_word = 0;
+		}
+		else if (str[pos] >= '0' && str[pos] <= '9')
+		{
+			new_word = 0;
+		}
+		else
+		{
+			new_word = 1;
 		}
 		pos++;
-		str[0] = str[0] - 32;
 	}
 	return (str);
 }
 
 int	main(void)
 {
-	char str[] = "ola 12 quiREre té -no";
+	char str[] = "qUE nO me ,DIGAS qUe éSto es fácil";
 
 	ft_strcapitalize(str);
 	printf("%s\n", str);

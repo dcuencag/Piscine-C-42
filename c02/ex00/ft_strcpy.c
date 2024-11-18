@@ -27,7 +27,7 @@ char	*ft_strcpy(char *dest, char *src)
 	*dest = '\0';
 	return (dest);
 }
-/*
+
 int	main(void)
 {
 	char	str1[] = "potatoes riding unicorns";
@@ -36,4 +36,4 @@ int	main(void)
 	printf("  Before:\n%s\n\n", dest);
 	ft_strcpy(dest, str1);
 	printf("  After:\n%s\n\n", dest);
-}*/
+}
