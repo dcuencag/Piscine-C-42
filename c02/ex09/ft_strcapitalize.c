@@ -24,8 +24,10 @@ char	*ft_strcapitalize(char *str)
 		if ((str[i] >= 'a' && str[i] <= 'z')
 			|| (str[i] >= 'A' && str[i] <= 'Z'))
 		{
-			str[i] = (new && str[i] >= 'a') ? str[i] - 32 :
-				(!new && str[i] <= 'Z') ? str[i] + 32 : str[i];
+			if (new && str[i] >= 'a')
+				str[i] = str[i] - 32;
+			else if (!new && str[i] <= 'Z')
+				str[i] = str[i] + 32;
 			new = 0;
 		}
 		else
@@ -34,7 +36,7 @@ char	*ft_strcapitalize(char *str)
 	}
 	return (str);
 }
-/* 
+
 int	main(void)
 {
 	char str[] = "qUE nO me ,dIGAS ?qUe !éSto es fácil";
@@ -43,4 +45,4 @@ int	main(void)
 	ft_strcapitalize(str);
 	printf("After:  %s\n\n", str);
 	return (0);
-} */
+}
