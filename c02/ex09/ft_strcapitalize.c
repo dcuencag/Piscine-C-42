@@ -24,14 +24,14 @@ char	*ft_strcapitalize(char *str)
 		if ((str[i] >= 'a' && str[i] <= 'z')
 			|| (str[i] >= 'A' && str[i] <= 'Z'))
 		{
-			if (new && str[i] >= 'a')
+			if (new == 1 && str[i] >= 'a')
 				str[i] = str[i] - 32;
-			else if (!new && str[i] <= 'Z')
+			else if (new == 0 && str[i] <= 'Z')
 				str[i] = str[i] + 32;
 			new = 0;
 		}
 		else
-			new = !(str[i] >= '0' && str[i] <= '9');
+			new = (str[i] < '0' || str[i] > '9');
 		i++;
 	}
 	return (str);
@@ -39,7 +39,7 @@ char	*ft_strcapitalize(char *str)
 
 int	main(void)
 {
-	char str[] = "qUE nO me ,dIGAS ?qUe !éSto es fácil";
+	char str[] = "qUE nO me ,dIGAS ?qUe !Sto es fácil";
 	
 	printf("\nBefore: %s\n\n", str);
 	ft_strcapitalize(str);
