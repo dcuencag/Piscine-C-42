@@ -34,7 +34,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	{
 		return (ft_strlen(src));
 	}
-	if (size > 0)
+	else
 	{
 		while (src[i] != '\0' && i < (size - 1))
 		{
@@ -46,7 +46,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 	return (ft_strlen(src));
 }
-/* 
+
 int	main(void)
 {
     char src[] = "Papa can you hear me";
@@ -55,8 +55,8 @@ int	main(void)
     int n = 5;
 
     ft_strlcpy(dest, src, n);
-    printf("dest = %s", dest);
+    printf("dest = %s\n", dest);
 
     strlcpy(dest1, src, n);
-    printf("dest1 = %s", dest1);
-} */
+    printf("dest1 = %s\n", dest1);
+}
